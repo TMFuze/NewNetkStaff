@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8d3bf15df1cf40ea89e59ca1911c903e" Name="Diagram1" ZoomLevel="81">
+        <EntityTypeShape EntityType="NetkStaffModel.Archive" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetkStaffModel.CountryCode" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetkStaffModel.DisciplinesTaught" Width="1.5" PointX="8" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetkStaffModel.DocType" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetkStaffModel.EducationForm" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetkStaffModel.EducationLevel" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetkStaffModel.FormOfEducationTermination" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetkStaffModel.Personnel" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetkStaffModel.Qualifications" Width="1.5" PointX="8" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetkStaffModel.Role" Width="1.5" PointX="10.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetkStaffModel.SourceOfFinancing" Width="1.5" PointX="0.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetkStaffModel.SpecializationCode" Width="1.5" PointX="0.75" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetkStaffModel.TrainingDirectionsAndSpecialties" Width="1.5" PointX="8" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetkStaffModel.User" Width="1.5" PointX="13" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetkStaffModel.WorkExperience" Width="1.5" PointX="8" PointY="8.875" IsExpanded="true" />
+        <AssociationConnector Association="NetkStaffModel.FK_Archive_CountryCode" ManuallyRouted="false" />
+        <AssociationConnector Association="NetkStaffModel.FK_Archive_DocType" ManuallyRouted="false" />
+        <AssociationConnector Association="NetkStaffModel.FK_Archive_EducationForm" ManuallyRouted="false" />
+        <AssociationConnector Association="NetkStaffModel.FK_Archive_EducationLevel" ManuallyRouted="false" />
+        <AssociationConnector Association="NetkStaffModel.FK_Archive_FormOfEducationTermination" ManuallyRouted="false" />
+        <AssociationConnector Association="NetkStaffModel.FK_Archive_SourceOfFinancing" ManuallyRouted="false" />
+        <AssociationConnector Association="NetkStaffModel.FK_Archive_SpecializationCode" ManuallyRouted="false" />
+        <AssociationConnector Association="NetkStaffModel.FK__Disciplin__Perso__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="NetkStaffModel.FK__Qualifica__Perso__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="NetkStaffModel.FK__TrainingD__Perso__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="NetkStaffModel.FK__WorkExper__Perso__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="NetkStaffModel.FK_User_Role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

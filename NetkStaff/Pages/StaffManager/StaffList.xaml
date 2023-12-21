@@ -1,0 +1,120 @@
+﻿<Page x:Class="NetkStaff.Pages.StaffManager.StaffList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NetkStaff.Pages.StaffManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+       Loaded="Page_Loaded"
+      Title="StaffList">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+               Text="50/273"
+               Name="ResultTxb"
+               FontSize="16"
+               VerticalAlignment="Center"
+               Margin="10,0,0,0"/>
+
+        <StackPanel Grid.Row="1"
+                Orientation="Horizontal"
+                Margin="10">
+            <TextBox Width="300"
+                 FontSize="16"
+                 Height="30"
+                 TextChanged="TxbSearch_TextChanged"
+                 Name="TxbSearch"/>
+            <ComboBox Name="CmbSort"
+                  SelectionChanged="CmbSort_SelectionChanged"
+                  Margin="5,0"
+                  Width="150">
+                <ComboBoxItem Content="Все типы"/>
+                <ComboBoxItem Content="Стаж | По возрастанию"/>
+                <ComboBoxItem Content="Стаж | По убыванию"/>
+                <ComboBoxItem Content="Педагогический стаж | По возрастанию"/>
+                <ComboBoxItem Content="Педагогический стаж | По убыванию"/>
+            </ComboBox>
+
+            <ComboBox Name="CmbFilter"
+                  Width="150"
+                  Margin="5,0"
+                  SelectionChanged="CmbFilter_SelectionChanged">
+            </ComboBox>
+            
+        </StackPanel>
+
+        <ListView Grid.Row="2" x:Name="PersonalList" Width="Auto" Height="Auto" SelectionChanged="PersonalList_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Фото -->
+                        <Image Source="{Binding ImagePath}" Width="150" Height="150" />
+
+                        <StackPanel Grid.Column="1" Margin="10">
+                            <!-- ФИО -->
+                            <TextBlock Text="{Binding FullName}" Margin="0,5,0,0" />
+
+                            <!-- Должность -->
+                            <TextBlock TextWrapping="Wrap">
+                        <Run Text="Должность:" FontWeight="Bold"/>
+                        <Run Text="{Binding Position}"/>
+                            </TextBlock>
+
+                            <!-- Общий стаж -->
+                            <TextBlock TextWrapping="Wrap">
+                        <Run Text="Общий стаж:" FontWeight="Bold"/>
+                        <Run Text="{Binding TotalWorkExperience}"/>
+                            </TextBlock>
+
+                            <!-- Педагогический стаж -->
+                            <TextBlock TextWrapping="Wrap">
+                        <Run Text="Педагогический стаж:" FontWeight="Bold"/>
+                        <Run Text="{Binding TeachingExperience}"/>
+                            </TextBlock>
+
+                            <!-- Дисциплины -->
+                            <TextBlock TextWrapping="Wrap" Text="Дисциплины:" FontWeight="Bold" Margin="0,5,0,0"/>
+                            <ItemsControl ItemsSource="{Binding DisciplinesTaught}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Discipline}" Margin="0,5,0,0" TextWrapping="Wrap"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="3"
+                Orientation="Horizontal">
+            <Button Name="BtnChange" 
+                Click="BtnChange_Click"  
+                Content="Изменить минимальное количество на..." 
+                Visibility="Hidden" 
+                Margin="10" 
+                Width="380"/>
+            <Button Margin="10"
+                Name="GoBackIWantToBeMonkey"
+                Content="Назад"
+                Click="GoBackIWantToBeMonkey_Click"
+                Style="{StaticResource ButtonStyleAdd}">
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,930 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище NetkStaffModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Archive">
+          <Key>
+            <PropertyRef Name="Number" />
+          </Key>
+          <Property Name="Number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdTypeDoc" Type="int" />
+          <Property Name="DocStatus" Type="bit" />
+          <Property Name="ConfOfLoss" Type="bit" />
+          <Property Name="ConfOfTrade" Type="bit" />
+          <Property Name="ConfOfDestroy" Type="bit" />
+          <Property Name="IdEduLevel" Type="int" />
+          <Property Name="DocSeries" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocNumber" Type="nvarchar" MaxLength="40" />
+          <Property Name="DateOfIssue" Type="date" />
+          <Property Name="RegNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="SpecializationCode" Type="int" />
+          <Property Name="SpecializationName" Type="nvarchar(max)" />
+          <Property Name="NameOfQual" Type="nvarchar(max)" />
+          <Property Name="NameEduProg" Type="nvarchar(max)" />
+          <Property Name="YearOfAdmission" Type="int" />
+          <Property Name="YearOfEnd" Type="int" />
+          <Property Name="EduDuration" Type="int" />
+          <Property Name="SurnameOfRecepient" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameOfRecepient" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleNameOfRecepinet" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOBRecepinet" Type="date" />
+          <Property Name="SexRecepinet" Type="bit" />
+          <Property Name="CountryCode" Type="int" />
+          <Property Name="EduForm" Type="int" />
+          <Property Name="FormOfEducationTermination" Type="int" />
+          <Property Name="SourceOfFinancing" Type="int" />
+          <Property Name="AvailabilityOfСontract" Type="bit" />
+        </EntityType>
+        <EntityType Name="CountryCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="DisciplinesTaught">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Personnel_id" Type="int" />
+          <Property Name="Discipline" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DocType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EducationForm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EducationLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="FormOfEducationTermination">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Personnel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="TotalWorkExperience" Type="int" Nullable="false" />
+          <Property Name="TeachingExperience" Type="int" Nullable="false" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Qualifications">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Personnel_id" Type="int" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SourceOfFinancing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SpecializationCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TrainingDirectionsAndSpecialties">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Personnel_id" Type="int" />
+          <Property Name="DirectionOrSpecialty" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WorkExperience">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Personnel_id" Type="int" />
+          <Property Name="ActivityArea" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Experience" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Disciplin__Perso__45F365D3">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="0..1" />
+          <End Role="DisciplinesTaught" Type="Self.DisciplinesTaught" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DisciplinesTaught">
+              <PropertyRef Name="Personnel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Qualifica__Perso__46E78A0C">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="0..1" />
+          <End Role="Qualifications" Type="Self.Qualifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Qualifications">
+              <PropertyRef Name="Personnel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TrainingD__Perso__47DBAE45">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="0..1" />
+          <End Role="TrainingDirectionsAndSpecialties" Type="Self.TrainingDirectionsAndSpecialties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TrainingDirectionsAndSpecialties">
+              <PropertyRef Name="Personnel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkExper__Perso__49C3F6B7">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="0..1" />
+          <End Role="WorkExperience" Type="Self.WorkExperience" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="WorkExperience">
+              <PropertyRef Name="Personnel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archive_CountryCode">
+          <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="CountryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archive_DocType">
+          <End Role="DocType" Type="Self.DocType" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="IdTypeDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archive_EducationForm">
+          <End Role="EducationForm" Type="Self.EducationForm" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationForm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="EduForm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archive_EducationLevel">
+          <End Role="EducationLevel" Type="Self.EducationLevel" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="IdEduLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archive_FormOfEducationTermination">
+          <End Role="FormOfEducationTermination" Type="Self.FormOfEducationTermination" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormOfEducationTermination">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="FormOfEducationTermination" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archive_SourceOfFinancing">
+          <End Role="SourceOfFinancing" Type="Self.SourceOfFinancing" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SourceOfFinancing">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="SourceOfFinancing" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archive_SpecializationCode">
+          <End Role="SpecializationCode" Type="Self.SpecializationCode" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecializationCode">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="SpecializationCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище NetkStaffModelContainer">
+          <EntitySet Name="Archive" EntityType="Self.Archive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CountryCode" EntityType="Self.CountryCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DisciplinesTaught" EntityType="Self.DisciplinesTaught" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocType" EntityType="Self.DocType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EducationForm" EntityType="Self.EducationForm" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EducationLevel" EntityType="Self.EducationLevel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormOfEducationTermination" EntityType="Self.FormOfEducationTermination" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qualifications" EntityType="Self.Qualifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SourceOfFinancing" EntityType="Self.SourceOfFinancing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecializationCode" EntityType="Self.SpecializationCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainingDirectionsAndSpecialties" EntityType="Self.TrainingDirectionsAndSpecialties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkExperience" EntityType="Self.WorkExperience" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Disciplin__Perso__45F365D3" Association="Self.FK__Disciplin__Perso__45F365D3">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="DisciplinesTaught" EntitySet="DisciplinesTaught" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Qualifica__Perso__46E78A0C" Association="Self.FK__Qualifica__Perso__46E78A0C">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="Qualifications" EntitySet="Qualifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TrainingD__Perso__47DBAE45" Association="Self.FK__TrainingD__Perso__47DBAE45">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="TrainingDirectionsAndSpecialties" EntitySet="TrainingDirectionsAndSpecialties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkExper__Perso__49C3F6B7" Association="Self.FK__WorkExper__Perso__49C3F6B7">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="WorkExperience" EntitySet="WorkExperience" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archive_CountryCode" Association="Self.FK_Archive_CountryCode">
+            <End Role="CountryCode" EntitySet="CountryCode" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archive_DocType" Association="Self.FK_Archive_DocType">
+            <End Role="DocType" EntitySet="DocType" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archive_EducationForm" Association="Self.FK_Archive_EducationForm">
+            <End Role="EducationForm" EntitySet="EducationForm" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archive_EducationLevel" Association="Self.FK_Archive_EducationLevel">
+            <End Role="EducationLevel" EntitySet="EducationLevel" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archive_FormOfEducationTermination" Association="Self.FK_Archive_FormOfEducationTermination">
+            <End Role="FormOfEducationTermination" EntitySet="FormOfEducationTermination" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archive_SourceOfFinancing" Association="Self.FK_Archive_SourceOfFinancing">
+            <End Role="SourceOfFinancing" EntitySet="SourceOfFinancing" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archive_SpecializationCode" Association="Self.FK_Archive_SpecializationCode">
+            <End Role="SpecializationCode" EntitySet="SpecializationCode" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NetkStaffModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Archive">
+          <Key>
+            <PropertyRef Name="Number" />
+          </Key>
+          <Property Name="Number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdTypeDoc" Type="Int32" />
+          <Property Name="DocStatus" Type="Boolean" />
+          <Property Name="ConfOfLoss" Type="Boolean" />
+          <Property Name="ConfOfTrade" Type="Boolean" />
+          <Property Name="ConfOfDestroy" Type="Boolean" />
+          <Property Name="IdEduLevel" Type="Int32" />
+          <Property Name="DocSeries" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocNumber" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfIssue" Type="DateTime" Precision="0" />
+          <Property Name="RegNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SpecializationCode" Type="Int32" />
+          <Property Name="SpecializationName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameOfQual" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="NameEduProg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="YearOfAdmission" Type="Int32" />
+          <Property Name="YearOfEnd" Type="Int32" />
+          <Property Name="EduDuration" Type="Int32" />
+          <Property Name="SurnameOfRecepient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameOfRecepient" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleNameOfRecepinet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOBRecepinet" Type="DateTime" Precision="0" />
+          <Property Name="SexRecepinet" Type="Boolean" />
+          <Property Name="CountryCode" Type="Int32" />
+          <Property Name="EduForm" Type="Int32" />
+          <Property Name="FormOfEducationTermination" Type="Int32" />
+          <Property Name="SourceOfFinancing" Type="Int32" />
+          <Property Name="AvailabilityOfСontract" Type="Boolean" />
+          <NavigationProperty Name="CountryCode1" Relationship="Self.FK_Archive_CountryCode" FromRole="Archive" ToRole="CountryCode" />
+          <NavigationProperty Name="DocType" Relationship="Self.FK_Archive_DocType" FromRole="Archive" ToRole="DocType" />
+          <NavigationProperty Name="EducationForm" Relationship="Self.FK_Archive_EducationForm" FromRole="Archive" ToRole="EducationForm" />
+          <NavigationProperty Name="EducationLevel" Relationship="Self.FK_Archive_EducationLevel" FromRole="Archive" ToRole="EducationLevel" />
+          <NavigationProperty Name="FormOfEducationTermination1" Relationship="Self.FK_Archive_FormOfEducationTermination" FromRole="Archive" ToRole="FormOfEducationTermination" />
+          <NavigationProperty Name="SourceOfFinancing1" Relationship="Self.FK_Archive_SourceOfFinancing" FromRole="Archive" ToRole="SourceOfFinancing" />
+          <NavigationProperty Name="SpecializationCode1" Relationship="Self.FK_Archive_SpecializationCode" FromRole="Archive" ToRole="SpecializationCode" />
+        </EntityType>
+        <EntityType Name="CountryCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Archive" Relationship="Self.FK_Archive_CountryCode" FromRole="CountryCode" ToRole="Archive" />
+        </EntityType>
+        <EntityType Name="DisciplinesTaught">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Personnel_id" Type="Int32" />
+          <Property Name="Discipline" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Personnel" Relationship="Self.FK__Disciplin__Perso__5EBF139D" FromRole="DisciplinesTaught" ToRole="Personnel" />
+        </EntityType>
+        <EntityType Name="DocType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Archive" Relationship="Self.FK_Archive_DocType" FromRole="DocType" ToRole="Archive" />
+        </EntityType>
+        <EntityType Name="EducationForm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Archive" Relationship="Self.FK_Archive_EducationForm" FromRole="EducationForm" ToRole="Archive" />
+        </EntityType>
+        <EntityType Name="EducationLevel">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Archive" Relationship="Self.FK_Archive_EducationLevel" FromRole="EducationLevel" ToRole="Archive" />
+        </EntityType>
+        <EntityType Name="FormOfEducationTermination">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Archive" Relationship="Self.FK_Archive_FormOfEducationTermination" FromRole="FormOfEducationTermination" ToRole="Archive" />
+        </EntityType>
+        <EntityType Name="Personnel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TotalWorkExperience" Type="Int32" Nullable="false" />
+          <Property Name="TeachingExperience" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DisciplinesTaught" Relationship="Self.FK__Disciplin__Perso__5EBF139D" FromRole="Personnel" ToRole="DisciplinesTaught" />
+          <NavigationProperty Name="Qualifications" Relationship="Self.FK__Qualifica__Perso__6477ECF3" FromRole="Personnel" ToRole="Qualifications" />
+          <NavigationProperty Name="TrainingDirectionsAndSpecialties" Relationship="Self.FK__TrainingD__Perso__619B8048" FromRole="Personnel" ToRole="TrainingDirectionsAndSpecialties" />
+          <NavigationProperty Name="WorkExperience" Relationship="Self.FK__WorkExper__Perso__6754599E" FromRole="Personnel" ToRole="WorkExperience" />
+          <Property Name="ImagePath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Qualifications">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Personnel_id" Type="Int32" />
+          <Property Name="Qualification" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Personnel" Relationship="Self.FK__Qualifica__Perso__6477ECF3" FromRole="Qualifications" ToRole="Personnel" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="SourceOfFinancing">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Archive" Relationship="Self.FK_Archive_SourceOfFinancing" FromRole="SourceOfFinancing" ToRole="Archive" />
+        </EntityType>
+        <EntityType Name="SpecializationCode">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Archive" Relationship="Self.FK_Archive_SpecializationCode" FromRole="SpecializationCode" ToRole="Archive" />
+        </EntityType>
+        <EntityType Name="TrainingDirectionsAndSpecialties">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Personnel_id" Type="Int32" />
+          <Property Name="DirectionOrSpecialty" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Personnel" Relationship="Self.FK__TrainingD__Perso__619B8048" FromRole="TrainingDirectionsAndSpecialties" ToRole="Personnel" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="WorkExperience">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="Personnel_id" Type="Int32" />
+          <Property Name="ActivityArea" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Experience" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Personnel" Relationship="Self.FK__WorkExper__Perso__6754599E" FromRole="WorkExperience" ToRole="Personnel" />
+        </EntityType>
+        <Association Name="FK_Archive_CountryCode">
+          <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="CountryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archive_DocType">
+          <End Role="DocType" Type="Self.DocType" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="IdTypeDoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archive_EducationForm">
+          <End Role="EducationForm" Type="Self.EducationForm" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationForm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="EduForm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archive_EducationLevel">
+          <End Role="EducationLevel" Type="Self.EducationLevel" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EducationLevel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="IdEduLevel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archive_FormOfEducationTermination">
+          <End Role="FormOfEducationTermination" Type="Self.FormOfEducationTermination" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormOfEducationTermination">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="FormOfEducationTermination" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archive_SourceOfFinancing">
+          <End Role="SourceOfFinancing" Type="Self.SourceOfFinancing" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SourceOfFinancing">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="SourceOfFinancing" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Archive_SpecializationCode">
+          <End Role="SpecializationCode" Type="Self.SpecializationCode" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SpecializationCode">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="SpecializationCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Disciplin__Perso__5EBF139D">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="0..1" />
+          <End Role="DisciplinesTaught" Type="Self.DisciplinesTaught" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DisciplinesTaught">
+              <PropertyRef Name="Personnel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Qualifica__Perso__6477ECF3">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="0..1" />
+          <End Role="Qualifications" Type="Self.Qualifications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Qualifications">
+              <PropertyRef Name="Personnel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TrainingD__Perso__619B8048">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="0..1" />
+          <End Role="TrainingDirectionsAndSpecialties" Type="Self.TrainingDirectionsAndSpecialties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TrainingDirectionsAndSpecialties">
+              <PropertyRef Name="Personnel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__WorkExper__Perso__6754599E">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="0..1" />
+          <End Role="WorkExperience" Type="Self.WorkExperience" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="WorkExperience">
+              <PropertyRef Name="Personnel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NetkStaffEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Archive" EntityType="Self.Archive" />
+          <EntitySet Name="CountryCode" EntityType="Self.CountryCode" />
+          <EntitySet Name="DisciplinesTaught" EntityType="Self.DisciplinesTaught" />
+          <EntitySet Name="DocType" EntityType="Self.DocType" />
+          <EntitySet Name="EducationForm" EntityType="Self.EducationForm" />
+          <EntitySet Name="EducationLevel" EntityType="Self.EducationLevel" />
+          <EntitySet Name="FormOfEducationTermination" EntityType="Self.FormOfEducationTermination" />
+          <EntitySet Name="Personnel" EntityType="Self.Personnel" />
+          <EntitySet Name="Qualifications" EntityType="Self.Qualifications" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="SourceOfFinancing" EntityType="Self.SourceOfFinancing" />
+          <EntitySet Name="SpecializationCode" EntityType="Self.SpecializationCode" />
+          <EntitySet Name="TrainingDirectionsAndSpecialties" EntityType="Self.TrainingDirectionsAndSpecialties" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="WorkExperience" EntityType="Self.WorkExperience" />
+          <AssociationSet Name="FK_Archive_CountryCode" Association="Self.FK_Archive_CountryCode">
+            <End Role="CountryCode" EntitySet="CountryCode" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archive_DocType" Association="Self.FK_Archive_DocType">
+            <End Role="DocType" EntitySet="DocType" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archive_EducationForm" Association="Self.FK_Archive_EducationForm">
+            <End Role="EducationForm" EntitySet="EducationForm" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archive_EducationLevel" Association="Self.FK_Archive_EducationLevel">
+            <End Role="EducationLevel" EntitySet="EducationLevel" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archive_FormOfEducationTermination" Association="Self.FK_Archive_FormOfEducationTermination">
+            <End Role="FormOfEducationTermination" EntitySet="FormOfEducationTermination" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archive_SourceOfFinancing" Association="Self.FK_Archive_SourceOfFinancing">
+            <End Role="SourceOfFinancing" EntitySet="SourceOfFinancing" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Archive_SpecializationCode" Association="Self.FK_Archive_SpecializationCode">
+            <End Role="SpecializationCode" EntitySet="SpecializationCode" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Disciplin__Perso__5EBF139D" Association="Self.FK__Disciplin__Perso__5EBF139D">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="DisciplinesTaught" EntitySet="DisciplinesTaught" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Qualifica__Perso__6477ECF3" Association="Self.FK__Qualifica__Perso__6477ECF3">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="Qualifications" EntitySet="Qualifications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TrainingD__Perso__619B8048" Association="Self.FK__TrainingD__Perso__619B8048">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="TrainingDirectionsAndSpecialties" EntitySet="TrainingDirectionsAndSpecialties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__WorkExper__Perso__6754599E" Association="Self.FK__WorkExper__Perso__6754599E">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="WorkExperience" EntitySet="WorkExperience" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище NetkStaffModelContainer" CdmEntityContainer="NetkStaffEntities">
+          <EntitySetMapping Name="Archive">
+            <EntityTypeMapping TypeName="NetkStaffModel.Archive">
+              <MappingFragment StoreEntitySet="Archive">
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="DocName" ColumnName="DocName" />
+                <ScalarProperty Name="IdTypeDoc" ColumnName="IdTypeDoc" />
+                <ScalarProperty Name="DocStatus" ColumnName="DocStatus" />
+                <ScalarProperty Name="ConfOfLoss" ColumnName="ConfOfLoss" />
+                <ScalarProperty Name="ConfOfTrade" ColumnName="ConfOfTrade" />
+                <ScalarProperty Name="ConfOfDestroy" ColumnName="ConfOfDestroy" />
+                <ScalarProperty Name="IdEduLevel" ColumnName="IdEduLevel" />
+                <ScalarProperty Name="DocSeries" ColumnName="DocSeries" />
+                <ScalarProperty Name="DocNumber" ColumnName="DocNumber" />
+                <ScalarProperty Name="DateOfIssue" ColumnName="DateOfIssue" />
+                <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
+                <ScalarProperty Name="SpecializationCode" ColumnName="SpecializationCode" />
+                <ScalarProperty Name="SpecializationName" ColumnName="SpecializationName" />
+                <ScalarProperty Name="NameOfQual" ColumnName="NameOfQual" />
+                <ScalarProperty Name="NameEduProg" ColumnName="NameEduProg" />
+                <ScalarProperty Name="YearOfAdmission" ColumnName="YearOfAdmission" />
+                <ScalarProperty Name="YearOfEnd" ColumnName="YearOfEnd" />
+                <ScalarProperty Name="EduDuration" ColumnName="EduDuration" />
+                <ScalarProperty Name="SurnameOfRecepient" ColumnName="SurnameOfRecepient" />
+                <ScalarProperty Name="NameOfRecepient" ColumnName="NameOfRecepient" />
+                <ScalarProperty Name="MiddleNameOfRecepinet" ColumnName="MiddleNameOfRecepinet" />
+                <ScalarProperty Name="DOBRecepinet" ColumnName="DOBRecepinet" />
+                <ScalarProperty Name="SexRecepinet" ColumnName="SexRecepinet" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="EduForm" ColumnName="EduForm" />
+                <ScalarProperty Name="FormOfEducationTermination" ColumnName="FormOfEducationTermination" />
+                <ScalarProperty Name="SourceOfFinancing" ColumnName="SourceOfFinancing" />
+                <ScalarProperty Name="AvailabilityOfСontract" ColumnName="AvailabilityOfСontract" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryCode">
+            <EntityTypeMapping TypeName="NetkStaffModel.CountryCode">
+              <MappingFragment StoreEntitySet="CountryCode">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DisciplinesTaught">
+            <EntityTypeMapping TypeName="NetkStaffModel.DisciplinesTaught">
+              <MappingFragment StoreEntitySet="DisciplinesTaught">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Personnel_id" ColumnName="Personnel_id" />
+                <ScalarProperty Name="Discipline" ColumnName="Discipline" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocType">
+            <EntityTypeMapping TypeName="NetkStaffModel.DocType">
+              <MappingFragment StoreEntitySet="DocType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EducationForm">
+            <EntityTypeMapping TypeName="NetkStaffModel.EducationForm">
+              <MappingFragment StoreEntitySet="EducationForm">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EducationLevel">
+            <EntityTypeMapping TypeName="NetkStaffModel.EducationLevel">
+              <MappingFragment StoreEntitySet="EducationLevel">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormOfEducationTermination">
+            <EntityTypeMapping TypeName="NetkStaffModel.FormOfEducationTermination">
+              <MappingFragment StoreEntitySet="FormOfEducationTermination">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personnel">
+            <EntityTypeMapping TypeName="NetkStaffModel.Personnel">
+              <MappingFragment StoreEntitySet="Personnel">
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="TotalWorkExperience" ColumnName="TotalWorkExperience" />
+                <ScalarProperty Name="TeachingExperience" ColumnName="TeachingExperience" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qualifications">
+            <EntityTypeMapping TypeName="NetkStaffModel.Qualifications">
+              <MappingFragment StoreEntitySet="Qualifications">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Personnel_id" ColumnName="Personnel_id" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="NetkStaffModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SourceOfFinancing">
+            <EntityTypeMapping TypeName="NetkStaffModel.SourceOfFinancing">
+              <MappingFragment StoreEntitySet="SourceOfFinancing">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpecializationCode">
+            <EntityTypeMapping TypeName="NetkStaffModel.SpecializationCode">
+              <MappingFragment StoreEntitySet="SpecializationCode">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrainingDirectionsAndSpecialties">
+            <EntityTypeMapping TypeName="NetkStaffModel.TrainingDirectionsAndSpecialties">
+              <MappingFragment StoreEntitySet="TrainingDirectionsAndSpecialties">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Personnel_id" ColumnName="Personnel_id" />
+                <ScalarProperty Name="DirectionOrSpecialty" ColumnName="DirectionOrSpecialty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="NetkStaffModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkExperience">
+            <EntityTypeMapping TypeName="NetkStaffModel.WorkExperience">
+              <MappingFragment StoreEntitySet="WorkExperience">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Personnel_id" ColumnName="Personnel_id" />
+                <ScalarProperty Name="ActivityArea" ColumnName="ActivityArea" />
+                <ScalarProperty Name="Experience" ColumnName="Experience" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
